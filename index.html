@@ -509,74 +509,115 @@
       font-weight: 300;
     }
 
-    .language-grid {
-      max-width: 690px;
+.language-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0;
+  width: 100%;
+  margin-top: 28px;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  border-left: 1px solid rgba(255, 255, 255, 0.14);
+}
 
-      display: grid;
 
-      grid-template-columns:
-        repeat(4, 1fr);
+/* Individual category card */
 
-      border-top: 1px solid var(--line);
+.language-card {
+  min-height: 145px;
+  padding: 22px 24px;
 
-      border-left: 1px solid var(--line);
-    }
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
 
-    .language-card {
-      min-height: 120px;
+  text-align: left;
 
-      padding: 18px;
+  background: transparent;
+  color: inherit;
 
-      border: 0;
+  border: none;
+  border-right: 1px solid rgba(255, 255, 255, 0.14);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
 
-      border-right:
-        1px solid var(--line);
+  cursor: pointer;
 
-      border-bottom:
-        1px solid var(--line);
+  transition:
+    background-color 0.25s ease,
+    transform 0.25s ease;
+}
 
-      background: transparent;
 
-      color: var(--text);
+/* Category title */
 
-      display: flex;
+.language-card strong {
+  display: block;
 
-      flex-direction: column;
+  max-width: 100%;
 
-      align-items: flex-start;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.2;
 
-      justify-content: space-between;
+  margin: 0;
+}
 
-      text-align: left;
 
-      cursor: pointer;
+/* View projects link */
 
-      transition:
-        background .25s ease,
-        color .25s ease;
-    }
+.language-card span {
+  display: block;
 
-    .language-card:hover {
-      background: var(--text);
+  margin-top: 28px;
 
-      color: #111;
-    }
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1;
 
-    .language-card strong {
-      font-size: 1.45rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 
-      font-weight: 500;
-    }
+  opacity: 0.65;
 
-    .language-card span {
-      font-size: .74rem;
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
+}
 
-      text-transform: uppercase;
 
-      letter-spacing: .1em;
+/* Hover */
 
-      opacity: .65;
-    }
+.language-card:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.language-card:hover span {
+  opacity: 1;
+  transform: translateX(4px);
+}
+
+
+/* Keyboard accessibility */
+
+.language-card:focus-visible {
+  outline: 1px solid rgba(255, 255, 255, 0.65);
+  outline-offset: -1px;
+}
+
+
+/* Mobile */
+
+@media (max-width: 700px) {
+
+  .language-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .language-card {
+    min-height: 120px;
+  }
+
+}
 
     /* ======================================================
        PERSONAL FAVOURITES
